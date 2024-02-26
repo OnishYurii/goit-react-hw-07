@@ -2,14 +2,16 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { SearchBox } from './SearchBox/SearchBox';
 import { ContactList } from './ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../redux/selector';
+import { selectContactsItem, selectLoadingStatus, selectError } from '../redux/selector';
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/operations';
 import { LineWave } from 'react-loader-spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { items, loading, error } = useSelector(getContacts);
+  const items = useSelector(selectContactsItem);
+  const loading = useSelector(selectLoadingStatus);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());

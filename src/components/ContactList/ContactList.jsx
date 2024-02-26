@@ -4,10 +4,10 @@ import css from './ContactList.module.css';
 import { selectFilteredContacts } from '../../redux/selector';
 
 export const ContactList = () => {
-  const contacts = useSelector(selectFilteredContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
   return (
     <ul className={css.list}>
-      {contacts.map(contact => (
+      {filteredContacts.map(contact => (
         <li key={contact.id}>
           <Contact item={contact} />
         </li>

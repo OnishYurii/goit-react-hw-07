@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../redux/selector';
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/operations';
+import { LineWave } from 'react-loader-spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,23 @@ export const App = () => {
   return (
     <div>
       <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Phonebook</h1>
-      {loading && !error && <p>Loading contacts...</p>}
+      {loading && !error && (
+        <div className="loader-container">
+          <LineWave
+            visible={true}
+            height="100"
+            width="100"
+            color="blue"
+            ariaLabel="line-wave-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            firstLineColor=""
+            middleLineColor=""
+            lastLineColor=""
+          />
+        </div>
+      )}
+      {error && <p>{error}</p>}
       <ContactForm />
       <SearchBox />
       {items.length > 0 && <ContactList />}

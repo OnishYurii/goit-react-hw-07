@@ -46,3 +46,8 @@ input {
   padding-left: 10px;
   height: 25px;
 }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+}
